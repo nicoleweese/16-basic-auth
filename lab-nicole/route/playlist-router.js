@@ -31,7 +31,7 @@ playlistRouter.get('/api/playlist/:playlistId', bearerAuth, function(req, res, n
 
 playlistRouter.delete('/api/playlist/:playlistId', bearerAuth, function(req, res, next) {
   debug('DELETE: /api/playlist/:playlistId');
-  console.log(req.params.playlistId);
+
   Playlist.findByIdAndRemove(req.params.playlistId)
     .then(() => res.sendStatus(204))
     .catch(next);
