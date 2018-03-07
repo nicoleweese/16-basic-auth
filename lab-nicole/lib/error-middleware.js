@@ -6,10 +6,6 @@ const debug = require('debug')('cfgram:error-middleware');
 module.exports = function(err, req, res, next) {
   debug('error middleware');
 
-  console.error('message:', err.message);
-  console.error('name:', err.name);
-  console.error('status', err.status);
-
   if (err.status) {
     res.status(err.status).send(err.name);
     next();
