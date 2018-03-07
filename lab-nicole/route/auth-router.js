@@ -12,10 +12,8 @@ const authRouter = module.exports = Router();
 
 authRouter.post('/api/signup', jsonParser, function(req, res, next) {
   debug('POST: /api/signup');
-
-  console.log('req.body', req.body);
   
-  if (req.body.username === undefined || req.body.email === undefined) return next(createError(400));
+  if (req.body.username === undefined || req.body.email === undefined) return res.sendStatus(400);
   
   let password = req.body.password;
   delete req.body.password;
@@ -35,11 +33,7 @@ authRouter.get('/api/signin', basicAuth, function(req, res, next) {
 
   User.findOne({ username: req.auth.username })
     .then( user => {
-      if (!user) return next(createError(401));
-      console.log('user', user);
-      console.log('req.auth', req.auth);
-      console.log('req.auth.password', req.auth.password);
-      
+      if (!user) return next(createError(401));      
       return user.comparePasswordHash(req.auth.password);
     })
     .then( user => user.generateToken())

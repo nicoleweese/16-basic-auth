@@ -37,8 +37,6 @@ describe('Auth Routes', function() {
           .send(exampleUser)
           .end((err, res) => {
             if(err) return done(err);
-            console.log('my token', res.text);
-            console.log('user name', res.body);
             expect(res.status).toEqual(200);
             expect(typeof res.text).toEqual('string');
             done();
@@ -51,7 +49,6 @@ describe('Auth Routes', function() {
         request.post(`${url}/api/signup`)
           .send({username: 'hi'})
           .end((err, res) => {
-            if(err) return done(err);
             expect(res.status).toEqual(400);
             done();
           });
@@ -85,7 +82,34 @@ describe('Auth Routes', function() {
             if(err) return done(err);
             expect(res.status).toEqual(200);
             expect(typeof res.text).toEqual('string');
-            console.log('signin token:', res.text);
+            done();
+          });
+      });
+    });
+
+    describe('with an invalid body',function() {
+      beforeEach( done => {
+        new User(exampleUser)
+          .generatePasswordHash('123456')
+          .then( user => user.save())
+          .then( user => {
+            this.tempUser = user;
+            done();
+          })
+          .catch(done);
+      });
+
+      afterEach( done => {
+        User.remove({})
+          .then( () => done())
+          .catch(done);
+      });
+
+      it('should return a 401', done => {
+        request.get(`${url}/api/signin`)
+          .auth('exampleuser', '1234')
+          .end((err, res) => {
+            expect(res.status).toEqual(401);
             done();
           });
       });
