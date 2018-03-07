@@ -40,6 +40,8 @@ musicRouter.delete('/api/music/:musicId', function(req, res, next) {
 musicRouter.put('/api/music/:musicId', function(req, res, next) {
   debug('PUT: /api/music/:musicId');
 
+  if(req.body.artist === undefined || req.body.genre === undefined || req.body.album === undefined) return next(createError(400));
+
   Music.findByIdAndUpdate(req.params.musicId, req.body, { new: true })
     .then( song => {
       if (!song) return next(createError(404));
