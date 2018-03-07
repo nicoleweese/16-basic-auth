@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const authRouter = require('./route/auth-router.js');
+const musicRouter = require('./route/music-router.js');
 const errors = require('./lib/error-middleware.js');
 
 dotenv.load();
@@ -20,6 +21,7 @@ mongoose.connect(process.env.MONGODB_URI);
 app.use(cors());
 app.use(morgan('dev'));
 app.use(authRouter);
+app.use(musicRouter);
 app.use(errors);
 
 const server = module.exports = app.listen(PORT, () => {
