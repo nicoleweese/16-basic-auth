@@ -3,7 +3,6 @@
 const jsonParser = require('body-parser').json();
 const debug = require('debug')('mp3uploader:auth-router');
 const Router = require('express').Router;
-// don't need all of express so we just pull in the router itself
 const basicAuth = require('../lib/basic-auth-middleware.js');
 const createError = require('http-errors');
 const User = require('../model/user.js');
