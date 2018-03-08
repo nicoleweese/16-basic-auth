@@ -32,6 +32,6 @@ The user is able to update a playlist, which is handled by a PUT request to the 
 
 The user is able to delete a playlist, which is handled by a DELETE request to the server. Once the server has successfully deletd the file, it will respond with a __204__.
 
-### PUT /api/playlist/:playlistId/mp3
+### POST /api/playlist/:playlistId/mp3
 
-The user is able to use this route to upload a song to Amazon's s3 service. When sending the request, the user must provide a song title and artist, and the app will assign the UserID of the current user and the playlistID that was provided in the route. The app will then add a time stamp, and then upload the mp3 file to the Amazon bucket, and return data such as the song URI which is then added to the mp3 object on the songURI property. If the upload is successful, the server will send the object back to the user as a response and a __204__ status code.
+The user is able to use this route to upload a song to Amazon's s3 service. When sending the request, the user must provide a song title and artist, and the app will assign the UserID of the current user and the playlistID that was provided in the route. The app will then add a time stamp, and then upload the mp3 file to the Amazon bucket, and return data such as the song URI which is then added to the mp3 object on the songURI property. If the upload is successful, the server will send the object back to the user as a response and a __200__ status code.
