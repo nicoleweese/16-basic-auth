@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const createError = require('http-errors');
 const Promise = require('bluebird');
-const debug = require('debug')('cfgram:user');
+const debug = require('debug')('mp3uploader:user');
 
 const Schema = mongoose.Schema;
 

@@ -1,7 +1,7 @@
 'use strict';
 
 const createError = require('http-errors');
-const debug = require('debug')('cfgram:error-middleware');
+const debug = require('debug')('mp3uploader:error-middleware');
 
 module.exports = function(err, req, res, next) {
   debug('error middleware');

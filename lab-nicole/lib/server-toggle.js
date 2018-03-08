@@ -1,6 +1,6 @@
 'use strict';
 
-const debug = require('debug')('cfgram:server-toggle');
+const debug = require('debug')('mp3uploader:server-toggle');
 const mongoose = require('mongoose');
 
 module.exports = exports = {};

@@ -2,7 +2,7 @@
 
 const Router = require('express').Router;
 const jsonParser = require('body-parser').json();
-const debug = require('debug')('cfgram:playlist-router');
+const debug = require('debug')('mp3uploader:playlist-router');
 const createError = require('http-errors');
 const Playlist = require('../model/playlist.js');
 const bearerAuth = require('../lib/bearer-auth-middleware.js');
