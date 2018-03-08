@@ -68,7 +68,6 @@ describe('mp3 Routes', function() {
       });
 
       beforeEach( done => {
-        console.log('this.tempUser', this.tempUser);
         examplePlaylist.userID = this.tempUser._id.toString();
         new Playlist(examplePlaylist).save()
           .then( playlist => {
@@ -84,8 +83,6 @@ describe('mp3 Routes', function() {
       });
 
       it('should return an object containing an mp3 URL', done => {
-        console.log(exampleMp3);
-        console.log('token', this.tempToken);
         superagent.post(`${url}/api/playlist/${this.tempPlaylist._id}/mp3`)
           .set({
             Authorization: `Bearer ${this.tempToken}`,
@@ -96,7 +93,6 @@ describe('mp3 Routes', function() {
           .end((err, res) => {
             if (err) return done(err);
             expect(res.status).toEqual(200);
-            console.log(res.body);
             expect(res.body.title).toEqual(exampleMp3.title);
             expect(res.body.artist).toEqual(exampleMp3.artist);
             expect(res.body.playlistID).toEqual(this.tempPlaylist._id.toString());

@@ -48,7 +48,6 @@ mp3Router.post('/api/playlist/:playlistId/mp3', bearerAuth, upload.single('song'
   Playlist.findById(req.params.playlistId)
     .then( () => s3uploadProm(params))
     .then( s3data => {
-      console.log('s3 response:', s3data);
 
       del([`${dataDir}/*`]);
 
@@ -60,7 +59,6 @@ mp3Router.post('/api/playlist/:playlistId/mp3', bearerAuth, upload.single('song'
         objectKey: s3data.Key,
         songURI: s3data.Location,
       };
-      console.log('mp3 data', mp3Data);
 
       return new Mp3(mp3Data).save();
     })
