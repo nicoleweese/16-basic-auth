@@ -28,7 +28,7 @@ const examplePlaylist = {
 const exampleMp3 ={
   title: 'Moonlight Sonata',
   artist: 'Beethoven',
-  song: path.join(__dirname, '..', 'data', 'SampleAudio_0.4mb.mp3'),
+  song: path.join(__dirname, 'testmp3', 'SampleAudio_0.4mb.mp3'),
 };
 
 describe('mp3 Routes', function() {
