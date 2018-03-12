@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "DEBUG='mp3uploader*' jest mp3-router.test.js",
+    "test": "DEBUG='mp3uploader*' jest",
     "coverage": "DEBUG='mp3uploader*' jest --coverage",
     "start": "DEBUG='mp3uploader*' node server.js",
     "lint": "eslint"
@@ -35,5 +35,8 @@
     "jsonwebtoken": "^8.2.0",
     "mongoose": "^5.0.9",
     "multer": "^1.3.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
